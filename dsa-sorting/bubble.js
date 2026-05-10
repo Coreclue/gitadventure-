@@ -1,3 +1,5 @@
+// Bubble Sort algorithim sorts an array by repeatedly swapping the adjacent elements if they are in the wrong order. The algorithm is named for the way smaller or larger elements "bubble" to the top of the list. The algorithm is not suitable for large data sets as its average and worst-case time complexity is quite high.
+
 console.log("FILE IS RUNNING");
 //
 
