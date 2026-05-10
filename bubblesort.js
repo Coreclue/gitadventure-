@@ -1,0 +1,17 @@
+function bubbleSort(arr) {
+    let count = 0;
+    for (let i = 0; i < arr.length; i++) 
+        for (let j = 0; j < arr.length; j++) {
+            count ++; 
+            if (arr[j] > arr[j+1]) {
+                let temp = arr [j];
+                arr[j+1] = temp;
+            }
+        }
+    }
+    onsole.log("Total Count: ", count);
+return arr;
+
+bubbleSort([4, 5, 8, 20, 30])
+
+
