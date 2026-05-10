@@ -26,8 +26,8 @@ function bubbleSort2(arr) {
                 if(arr[j] > arr[j + 1]){
                     let temp = arr[j+1];
                     arr[j] = arr[j + 1];
-                    arr[j+1] = temp;
-
+                    arr[j+1] = temp;j
+fsasdf
                 }
 
             }
