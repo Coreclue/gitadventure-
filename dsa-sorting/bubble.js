@@ -25,3 +25,13 @@ console.log(bubbleSort([2,11,9,26,31,35,60,70,700,7000,700000]));
 
 
 module.exports = bubbleSort;
+
+
+// ### **BubbleSort Pseudocode*
+
+// - Loop with ***i*** from end of array towards beginning
+//     - Loop with ***j*** from the beginning until ***i - 1***
+//     - If ***arr[j]*** is greater than ***arr[j+1]***, swap those two values!
+// - Return the sorted array
+// - This technique is called Bubble Sort. Why?
+//     - Because the big numbers bubble to the top!
