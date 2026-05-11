@@ -1,3 +1,6 @@
+// Selection Sort
+// Selection Sort algorithm sorts an array by repeatedly finding the minimum element from the unsorted part and putting it at the beginning. The algorithm maintains two subarrays in a given array: the subarray which is already sorted and the remaining subarray which is unsorted. In every iteration of selection sort, the minimum element from the unsorted subarray is picked and moved to the sorted subarray. The algorithm is not suitable for large data sets as its average and worst-case time complexity is quite high.
+
 function selectionSort(arr) {
     for (let i = 0; i < arr.length; i++) {
         let min = i;
