@@ -15,31 +15,43 @@ function addOneTimeTask (func, delay)
 // TODO: Create a function named `runOneTimeTasks` that iterates over the `oneTimeTasks` array and uses `setTimeout` to schedule each task according to its delay.
 function runOneTimeTasks ()
 {
-	
+	for(const oneTimeTask of oneTimeTasks) 
+		{
+			setTimeout(oneTimeTask.func, oneTimeTask.delay);
+		}
+		
+
 }
 
 // Task 4: Start Monitoring Function
+// TODO: Write a function named `startMonitoring` that uses `setInterval` to simulate continuous monitoring. This function should print a message every few seconds and store the interval ID in `monitoringTaskId`.
 function startMonitoring ()
 {
-	// TODO: Write a function named `startMonitoring` that uses `setInterval` to simulate continuous monitoring. This function should print a message every few seconds and store the interval ID in `monitoringTaskId`.
+	console.log("Starting Continuous monitoring of space station Parameters...");
+
+	monitorTaskId = setInterval(() => {console.log("Monitoring Space Station conditions..."); 
+		
+		/* Conditions checks */})
+		
+
 }
 
 // Task 5: Stop Monitoring Function
+// TODO: Implement a function named `stopMonitoring` that stops the continuous monitoring by using `clearInterval` on `monitoringTaskId`.
 function stopMonitoring ()
 {
-	// TODO: Implement a function named `stopMonitoring` that stops the continuous monitoring by using `clearInterval` on `monitoringTaskId`.
 }
 
 // Task 6: Start Countdown Function
+// TODO: Create a function named `startCountdown` that takes a duration parameter. Use `setInterval` to decrease the countdown every second and print the remaining time. Use `clearInterval` to stop the countdown when it reaches zero, printing a "Liftoff!" message.
 function startCountdown (duration)
 {
-	// TODO: Create a function named `startCountdown` that takes a duration parameter. Use `setInterval` to decrease the countdown every second and print the remaining time. Use `clearInterval` to stop the countdown when it reaches zero, printing a "Liftoff!" message.
 }
 
 // Task 7: Schedule Pre-Launch Activities and Launch
+// TODO: Use the functions you've created to schedule the pre-launch system check, start and stop monitoring, and execute the countdown. Make sure to adjust the delays appropriately to simulate a real mission timeline.
 function scheduleMission ()
 {
-	// TODO: Use the functions you've created to schedule the pre-launch system check, start and stop monitoring, and execute the countdown. Make sure to adjust the delays appropriately to simulate a real mission timeline.
 }
 
-scheduleMission(); // Starts the mission.
+ dscheduleMission(); // Starts the mission.
