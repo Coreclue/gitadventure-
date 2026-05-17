@@ -41,12 +41,29 @@ function startMonitoring() {
 // Task 5: Stop Monitoring Function
 // TODO: Implement a function named `stopMonitoring` that stops the continuous monitoring by using `clearInterval` on `monitoringTaskId`.
 function stopMonitoring() {
+	clearInterval(monitorTaskId);
+	console.log("Monitoring Stoped.");
 }
 
 // Task 6: Start Countdown Function
 // TODO: Create a function named `startCountdown` that takes a duration parameter. Use `setInterval` to decrease the countdown every second and print the remaining time. Use `clearInterval` to stop the countdown when it reaches zero, printing a "Liftoff!" message.
 function startCountdown(duration) {
-}
+	let timeleft = duration;
+	console.log("Continuous `Countdown started: ${timeLeft} seconds remaining...");
+	
+	const countdownTimerId = setInterval(
+		function() {
+			timeleft --;
+			consolee.log(`T-minus ${timeLeft} seconds`);
+
+			if (timeleft <= 0)
+			{
+				clearInterval(countdouwnTimerId);
+				console.log("Liftoff! The rocket has successfully launched into space")
+			}
+		}, 1000 
+	);}
+
 
 // Task 7: Schedule Pre-Launch Activities and Launch
 // TODO: Use the functions you've created to schedule the pre-launch system check, start and stop monitoring, and execute the countdown. Make sure to adjust the delays appropriately to simulate a real mission timeline.
