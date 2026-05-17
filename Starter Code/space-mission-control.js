@@ -30,11 +30,11 @@ function startMonitoring() {
 
 		/* Conditions checks */
 
-		const oxygenLevel = Math.random * 100; //Mock-up oxygen level percentage.
+		const oxygenLevel = Math.random() * 100; //Mock-up oxygen level percentage.
 		const powerStatus = Math.random() > 0.1 ? "stable" : "critical"; // Mock-up power status. 
 		const communicationCheck = Math.random() > 0.05 ? "All systems go" : "Communication Error"; // Mock-up communication system check. 
 		console.log(`Oxygen Level: ${oxygenLevel.toFixed(2)}% | Power Status: ${powerStatus} | Communication: ${communicationCheck}`);
-	}, 2000); 
+	}, 2000);
 }
 
 
@@ -48,26 +48,32 @@ function stopMonitoring() {
 // Task 6: Start Countdown Function
 // TODO: Create a function named `startCountdown` that takes a duration parameter. Use `setInterval` to decrease the countdown every second and print the remaining time. Use `clearInterval` to stop the countdown when it reaches zero, printing a "Liftoff!" message.
 function startCountdown(duration) {
-	let timeleft = duration;
-	console.log("Continuous `Countdown started: ${timeLeft} seconds remaining...");
-	
-	const countdownTimerId = setInterval(
-		function() {
-			timeleft --;
-			consolee.log(`T-minus ${timeLeft} seconds`);
+	let timeLeft = duration;
+	console.log(`Continuous Countdown started: ${timeLeft} seconds remaining...`);
 
-			if (timeleft <= 0)
-			{
-				clearInterval(countdouwnTimerId);
+	const countdownTimerId = setInterval(
+		function () {
+			timeLeft--;
+			console.log(`T-minus ${timeLeft} seconds`);
+
+			if (timeLeft <= 0) {
+				clearInterval(countdownTimerId);
 				console.log("Liftoff! The rocket has successfully launched into space")
 			}
-		}, 1000 
-	);}
+		}, 1000
+	);
+}
 
 
 // Task 7: Schedule Pre-Launch Activities and Launch
 // TODO: Use the functions you've created to schedule the pre-launch system check, start and stop monitoring, and execute the countdown. Make sure to adjust the delays appropriately to simulate a real mission timeline.
 function scheduleMission() {
+	startMonitoring(); // starts monitoring space station conditions. 
+	addOneTimeTask(() => { console.log("Pre-Launch system check complete."); }, 5000);
+	addOneTimeTask(stopMonitoring, 10000); // stops monitoring before the countdown.
+	addOneTimeTask(() => { startCountdown(10); }, 1500); // starts countdown after all preparations.
+
+	runOneTimeTasks(); // Executes all one-time tasks.
 }
 
-dscheduleMission(); // Starts the mission.
+scheduleMission(); // Starts the mission.
