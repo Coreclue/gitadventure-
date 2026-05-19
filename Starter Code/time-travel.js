@@ -9,8 +9,10 @@ destination = "Medieval Europe";
 console.log(`New Destination: ${destination}`);
 /* Task 3: Declare a Constant Travel Date */
 // TODO: Use `const` to declare a variable named `travelDate` and set it to `"2024-03-15"`. Try to change the `travelDate` to another value and observe and explain what happens as a comment.
-/*
- * Observations:
+const travelDate = "2030-03-15";
+console.log(`Travel Date: ${travelDate}`);
+
+/* Observations:
  * TODO: Explain here.
  */
 
