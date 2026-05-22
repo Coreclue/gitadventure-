@@ -17,7 +17,7 @@ console.log(currentCoordinates());
 // TODO: Inside an object named `spacecraft`, create a method named `receiveMessage` using arrow function syntax. This method should log `"Message received: "` followed by a message it receives as a parameter. Directly call `receiveMessage` within `spacecraft` and observe. Observe and explain the behavior of `this` in this context as a comment.
 
 const spacecraft = {
-    name: :" Galactic Voyager",
+    name: " Galactic Voyager",
     receivedMessage: (message) => 
     {
         console.log(`Message received: ${message}`);
