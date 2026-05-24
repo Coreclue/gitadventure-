@@ -1,6 +1,12 @@
 /* Task 1: Unveiling the Coordinates */
-const coordinates = {x: 34, y: 42, z: 67};
+const coordinates = { x: 34, y: 42, z: 67 };
+
 // TODO: Destructo has found a map with coordinates marked on it. Use object destructuring to extract the `x` and `y` coordinates from the given `coordinates` object. Print the coordinates.
+
+const { z, ...xy } = coordinates;
+
+console.log(xy);
+
 
 /* Task 2: The Map of Secrets */
 const locations = {
