@@ -4,7 +4,6 @@ const coordinates = { x: 34, y: 42, z: 67 };
 // TODO: Destructo has found a map with coordinates marked on it. Use object destructuring to extract the `x` and `y` coordinates from the given `coordinates` object. Print the coordinates.
 
 const { z, ...xy } = coordinates;
-
 console.log(xy);
 
 
@@ -15,9 +14,14 @@ const locations = {
 	third: "Mount of Ages",
 	fourth: "Desert of Shadows"
 };
+
 // TODO: The map reveals several locations, but only the first two are significant for the quest. Use object destructuring with the rest parameter to isolate the `first` and `second` locations from the `locations` object, capturing the rest in a variable called `remaining`. Print the key locations.
 
+const { first, second, ...remaining } = locations;
+console.log(remaining);
+
 /* Task 3: The Mysterious Door */
+
 const doorCode = {
 	upper: "Alpha",
 	lower: "Omega"
