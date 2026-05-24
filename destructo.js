@@ -92,10 +92,20 @@ function catSpell([ingredient1, ingredient2]) {
 catSpell(["honey", "oats"])
 
 /* Task 11: The Nested Secret */
-const nestedSecret = {outer: {inner: "The Final Key"}};
+const nestedSecret = { outer: { inner: "The Final Key" } };
+
 // TODO: Behind the final door lies a nested artifact containing the ultimate clue. Use nested destructuring to extract `The Final Key`. Print the unveiled secret.
+
+const { outer: { inner: finalKey } } = nestedSecret;
+console.log(`Unveiled secret: ${finalKey}`);
+
+
+
 
 /* Task 12: The Swap of Fate */
 let stoneA = "Emerald";
 let stoneB = "Ruby";
 // TODO: In the treasure chamber, two mystical stones control the treasure's safeguard. Use array destructuring to swap the values of `stoneA` and `stoneB`. Print the result of the swap.
+
+[stoneA, stoneB,] = [stoneB, stoneA];
+console.log(`Stone A: ${stoneA}, Stone B: ${stoneB}`);
