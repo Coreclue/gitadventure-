@@ -86,6 +86,10 @@ mixPotion({ ingredient1: "herb" });
 
 /* Task 10: The Array Spell */
 // TODO: At the gates of an ancient library, Destructo must cast a spell with the first two ingredients from a list given to him by a wise owl. Create a function `castSpell` that uses array destructuring to access these ingredients from an array and print the spell casting.
+function catSpell([ingredient1, ingredient2]) {
+	console.log(`Casting spell with ${ingredient1} and ${ingredient2}`);
+}
+catSpell(["honey", "oats"])
 
 /* Task 11: The Nested Secret */
 const nestedSecret = {outer: {inner: "The Final Key"}};
