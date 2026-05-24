@@ -1,14 +1,20 @@
 /* Task 1: Track Animal Sightings */
 // TODO: Write a function with rest parameters to print sightings of different animals within the sanctuary. This function should accept an arbitrary number of animal names.
 function animalSightings(...animalsCount) {
-	console.log(`You're looking at  $animalsCount}`)
+	return animalsCount
 }
+
+console.table("animals sightings in the sancturary wow!" + animalSightings("Lion", "Elephant", "Giraffe"));
+
+console.log("Task one complete!")
 
 /* Task 2: Merge Habitat Areas */
 // TODO: You are given two arrays of habitat names. Use the spread operator to combine them into a comprehensive list of protected areas within the sanctuary.
-const forestHabitats = ["Forest A", "Forest B"];
-const savannahHabitats = ["Savannah C", "Savannah D"];
+const forestHabitats = ["Forest A ", "Forest B"];
+const savannahHabitats = [" Savannah C ", "Savannah D"];
 const allHabitats = [...forestHabitats, ...savannahHabitats];
+
+console.log("Task 2 complete");
 
 /* Task 3: Update Conservation Status */
 // TODO: You are given an object representing an animal's conservation status. Use the spread operator to update this status with new information, such as an increase in population or a change in habitat.
@@ -22,7 +28,9 @@ const updatedRhinoStatus = {
 	population: 550,
 	status: "safe"
 }
- 
+console.log("original object before: " + JSON.stringify(rhinoStatus));
+console.log("updated object: " + JSON.stringify(updatedRhinoStatus));
+console.log("Task 3 complete")
 
 
 /* Task 4: Catalog Genetic Diversity */
@@ -39,9 +47,9 @@ lionProfileCopy.genetics = {
 	gender: "female",
 	diet: "carnivore"
 }
-console.log(lionProfileCopy);
-
-
+console.log("original object before: " + JSON.stringify(lionProfile));
+console.log("copied object: " + JSON.stringify(lionProfileCopy));
+console.log("Task 4 complete")
 
 
 /*
@@ -68,7 +76,10 @@ const foodSupplyUpdate = {
 
 };
 
-console.log(foodSupplyUpdate);
+console.log("original object before: " + JSON.stringify(ecosystemHealth));
+console.log("updated food supply: " + JSON.stringify(foodSupplyUpdate));
+console.log("Task 5 complete")
+
 /*
  * Observations:
  * TODO: Explain here.
