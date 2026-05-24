@@ -26,13 +26,18 @@ const doorCode = {
 	upper: "Alpha",
 	lower: "Omega"
 };
+
 // TODO: To open the Mysterious Door, a sequence is required, which might be incomplete. Use object destructuring to assign default values to ensure the door opens even if part of the code is missing. Make sure the `middle` defaults to one of the values from the `remaining` variable above if not provided. Print the door code sequence.
+
+const { upper, middle = remaining.third, lower } = doorCode;
+console.log({ upper, lower, middle });
 
 /* Task 4: The Guardian's Riddle */
 const riddle = {
 	ancientWord: "Sphinx",
 	modernWord: "Cat"
 };
+
 // TODO: The guardian of an ancient library speaks in riddles. Use object destructuring to rename `ancientWord` to `translation` in the `riddle` object. Print the translation of the riddle.
 
 /* Task 5: The Array of Elements */
