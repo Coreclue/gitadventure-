@@ -53,10 +53,15 @@ console.log(remainingElements)
 
 /* Task 6: Skipping Stones */
 const stones = [1, 2, 3, 4, 5, 6];
+
 // TODO: Crossing the River of Reflections requires skipping certain stones. Use array destructuring to extract only the first and the sixth stones. Print the extracted stones.
+
+const [first1, , , , , sixth] = stones;
+console.log("Extracted stones;", first1, sixth);
 
 /* Task 7: The Array of Shadows */
 const shadows = ["Darkness", "Silence", "Whisper", "Echo"];
+
 // TODO: The Cave of Shadows hides more than it reveals. Use array destructuring with the rest parameter to separate the visible shadow (which is the first) from the hidden ones. Print the visible shadow and the hidden shadows.
 
 /* Task 8: The Wise Function */
