@@ -34,7 +34,9 @@ const participant2 = {
 /*
  * Observations:
  * TODO: Explain here.
- * In the case of the arrow function, `this` does not refer to the `participant2` object as it does in the regular function. Instead, it refers to the surrounding lexical context, which is the global scope in this case. Therefore, we cannot use `this` to access the properties of `participant2` within the arrow function. Instead, we have to directly reference the `participant` object to access its properties. This is a key difference between regular functions and arrow functions in JavaScript regarding the behavior of `this`.
+ * In the case of the arrow function, `this` does not refer to the `participant2` object as it does in the regular function. Instead, it refers to the surrounding lexical context, which is the global scope in this case. 
+ * Therefore, we cannot use `this` to access the properties of `participant2` within the arrow function. Instead, we have to directly reference the `participant` object to access its properties. 
+ * This is a key difference between regular functions and arrow functions in JavaScript regarding the behavior of `this`.
  */
 
 /* Task 4: Using Computed Property Names */
