@@ -11,21 +11,11 @@ const movies = [
 	{ title: "Ex Machina", director: "Alex Garland", yearReleased: 2014 }
 ];
 
-function name(movies){
-	console.log(movies);
-}
-
-//sort objects by title.
-name(movies.sort((a, b) => a.title.localeCompare(b.title)));
 
 
 
 
-function moviess() {
-	movies.forEach(movie => {
-		console.log(movie.title + " directed by " + movie.director + " released in " + movie.yearReleased);
-		
-	});
-};
+movies.forEach(function(movieList) {
+	console.log(`Title: ${movieList.title}, Director: ${movieList.director}, Year Released: ${movieList.yearReleased}`);
+})
 
-moviess()
