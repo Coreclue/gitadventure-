@@ -4,6 +4,6 @@ import { addItem, removeItem, listItems } from "./inventory.mjs";
 
 addItem("Clear", "Hazel", "Ben")
 removeItem("Clear", "Jim")
-
-listItems(inventory)
+removeItem("Alpha")
+listItems()
 
