@@ -71,44 +71,80 @@ colorForm.addEventListener("submit", function (event) {
     noteColor = newColor; // Updates the stored note color with the new selection.
 
 
-    document.addEventListener("dblclick", function (event) {
-        if (event.target.classList.contains("box")) {
-            event.target.remove(); // Removes the clicked box.
-        }
-    });
+    // TODO: Update the note color in the local storage.
 
-    // 7 To display a box's page coordinates, listen to the mouse over events in the document. If the event's target's class list contains the value box, display the coordinates.
+    localStorage.setItem("noteColor", noteColor); // Saves the selected note color to the local storage.
 
-    document.addEventListener("mouseover", function (event) {
-        if (event.target.classList.contains("box")) {
-            event.target.textContent = `x: ${event.pageX}, y: ${event.pageY}`; // Temporarily change display text to show coordinates.
-        }
-    });
-
-    // 8 To display a box's ID back when the mouse leaves after displaying the box's page coordinates, listen to the mouse out events in the document. If the event's target's class list contains the value box, get the ID from the box's data attributes and display it.
-
-    document.addEventListener("mouseout", function (event) {
-
-        if (event.target.classList.contains("box")) {
-
-            event.target.textContent =
-                event.target.dataset.boxId;
-
-        }
-
-    });
-
-    // 9 To create a new box when the N key is pressed, listen to the key-down events in the document. If the key is N (check both upper and lower cases), call the function that adds a new box. Remember to ignore the event if it is triggered from the color input element.
-
-    document.addEventListener("keydown", function (event) {
-        if (event.key === "n" || event.key === "N") {
-            addNewBox();
-        }
-
-        if (event.target === colorInput) {
-            return; // Ignore the event if it is triggered from the color input element.
-        }
-    })
+});
 
 
+
+/* 4 Create a function that adds a new note. In this function, set the note ID as content, the class name, and the background color from the note color variable we created in Step 3. Besides, set the note ID to a data attribute. You'll need this attribute to set the display text back to ID when the mouse leaves. Since we used this counter ID, increment it using the counter variable we created in Step 3 to keep its uniqueness. */
+
+function addNewNote() {
+    const note = document.createElement("textarea");
+    note.value = `note ${noteIdCounter}`; // Sets the note ID as text.
+    note.className = "note"; // Sets a CSS class.
+    note.style.backgroundColor = noteColor; // Sets the note's background color using the last selected note color.
+    note.setAttribute("data-note-id", noteIdCounter.toString()); // Stores the note ID to its data attribute.
+    noteContainer.appendChild(note); // Appends it to the note container element as its child.
+
+    noteIdCounter++; // Increments the counter since the ID is used for this note.
+
+}
+
+
+
+
+// 5 When the new note button is clicked, call the function that we created above that adds a new note.
+
+newNoteButton.addEventListener("click", function () {
+    addnewNote();
+});
+
+// 6 To remove a note, listen to the double-click events in the document. If the event's target's class list contains the value note, remove the element.
+
+document.addEventListener("dblclick", function (event) {
+    if (event.target.classList.contains("note")) {
+        event.target.remove(); // Removes the clicked note.
+
+        // TODO: Delete the note from the saved notes in the local storage.
+        const noteId = event.target.dataset.noteId;
+        let notes = displayNotes();
+        // removes matching notes
+        notes = notes.filter(note => note.id.toString() !== noteId);
+        localStorage.setItem("notes", JSON.stringify(notes));
+    }
+});
+
+
+noteContainer.addEventListener("blur", function (event) {
+    if (event.target.classList.contains("note")) {
+        // TODO: Update the note from the saved notes in the local storage.
+
+        const noteId = event.target.dataset.noteId;
+        const noteContent = event.target.value;
+        const notes = displayNotes();
+
+
+
+    }
+}, true);
+
+
+
+// 9 To create a new note when the N key is pressed, listen to the key-down events in the document. If the key is N (check both upper and lower cases), call the function that adds a new note. Remember to ignore the event if it is triggered from the color input element.
+
+window.addEventListener("keydown", function (event) {
+    /* Ignores key presses made for color and note content inputs. */
+
+    if (event.target.id === "color-input" || event.target.type === "textarea") {
+        return; // Ignore the event if it is triggered from the color input element or note content input.
+    }
+
+    /* Adds a new note when the "n" key is pressed. */
+
+    if (event.key === "n" || event.key === "N") {
+        addNewNote(); // Adds a new note.
+    }
 });
