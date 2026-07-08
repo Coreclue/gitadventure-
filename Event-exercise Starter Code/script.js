@@ -25,38 +25,51 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loadIDCounter();
 
-        boxColor = colorInput.value.trim();
+    // TODO: Load the notes from the local storage.
 
-        const boxes = document.getElementsByClassName("box");
+    function loadNotes() {
+        let notes = localStorage.getItem("notes");
 
-        for (let box of boxes) {
-            box.style.backgroundColor = boxColor; // Sets the box's background color using the last selected box color. 
+        if (!notes) {
+            notes = [];
+        } else {
+            notes = JSON.parse(notes);
         }
-
-        colorInput.value = "";
-    });
-
-
-    /* 4 Create a function that adds a new box. In this function, set the box ID as content, the class name, and the background color from the box color variable we created in Step 3. Besides, set the box ID to a data attribute. You'll need this attribute to set the display text back to ID when the mouse leaves. Since we used this counter ID, increment it using the counter variable we created in Step 3 to keep its uniqueness. */
-
-    function addNewBox() {
-        const box = document.createElement("div");
-        box.textContent = `Box ${boxIdCounter}`; // Sets the box ID as text.
-        box.className = "box"; // Sets a CSS class.
-        box.style.backgroundColor = boxColor; // Sets the box's background color using the last selected box color.
-        box.setAttribute("data-box-id", boxIdCounter.toString()); // Stores the box ID to its data attribute.
-        boxContainer.appendChild(box); // Appends it to the box container element as its child.
-
-        boxIdCounter++; // Increments the counter since the ID is used for this box.
+        return notes;
     }
 
-    // 5 When the new box button is clicked, call the function that we created above that adds a new box.
+    // TODO: Add new note to the saved notes in the local storage.
+    let notes = displayNotes();
+    if (!notes) {
+        notes = [];
+    } else {
+        notes = JSON.parse(notes);
+    }
+    return notes;
 
-    newBoxButton.addEventListener("click", function () {
-        addNewBox();
-    });
+    notes.push({ id, content, color: noteColor });
+    localStorage.setItem("notes", JSON.stringify(notes));
 
-    // 6 To remove a box, listen to the double-click events in the document. If the event's target's class list contains the value box, remove the element.
+};
+
+
+
+// 3 When the form is submitted, get the value from the color input element from Step 2 and set this color to all notes (to get all notes, use the class name note). Remember to reset the color input element's value and store the color in the note color variable we created in Step 3.
+
+colorForm.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevents the default event.
+
+    const newColor = colorInput.value.trim();  // Removes whitespaces.
+
+    const notes = document.querySelectorAll(".note");
+    for (const note of notes) {
+        note.style.backgroundColor = newColor;
+    }
+
+    colorInput.value = ""; // Clears the color input field after from submission.
+
+    noteColor = newColor; // Updates the stored note color with the new selection.
+
 
     document.addEventListener("dblclick", function (event) {
         if (event.target.classList.contains("box")) {
