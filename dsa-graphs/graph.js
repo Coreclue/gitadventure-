@@ -19,7 +19,8 @@ addVertex(vertex) {
 addVertices(vertexArray) { 
   let nodeArray = [];
   for (array in nodeArray) {
-    this .nodeArray.add.Graph 
+    this.nodes.add(nodeArray[array]);
+  }
 }
 
 // this function accepts two vertices and updates their adjacent values to include the other vertex
@@ -30,11 +31,16 @@ addEdge(v1, v2) {
 
 // this function accepts two vertices and updates their adjacent values to remove the other vertex
 removeEdge(v1, v2) {
-  
+  v1.adjacent.delete(v2);
+  v2.adjacent.delete(v1);
  }
 
 // this function accepts a vertex and removes it from the nodes property, it also updates any adjacency lists that include that vertex
-removeVertex(vertex) { }
+removeVertex(vertex) { 
+  this.nodes.forEach(node => node.adjacent.delete(vertex));
+  this.nodes.delete(vertex);
+
+}
 
   // Follow one path as far as possible before coming back to try another path.
   // Return the value of each Node in the order it was first visited.
