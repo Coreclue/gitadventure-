@@ -10,8 +10,6 @@ class Graph {
     this.nodes = new Set();
   }
 
-
-
 // this function accepts a Node instance and adds it to the nodes property on the graph
 addVertex(vertex) { 
   this.nodes.add(vertex)
@@ -38,11 +36,48 @@ removeEdge(v1, v2) {
 // this function accepts a vertex and removes it from the nodes property, it also updates any adjacency lists that include that vertex
 removeVertex(vertex) { }
 
-// this function returns an array of Node values using DFS
-depthFirstSearch(start) { }
+  // Follow one path as far as possible before coming back to try another path.
+  // Return the value of each Node in the order it was first visited.
+  depthFirstSearch(start) {
+    const visited = new Set();
+    const values = [];
 
-// this function returns an array of Node values using BFS
-breadthFirstSearch(start) { }
+    const visit = (vertex) => {
+      visited.add(vertex);
+      values.push(vertex.value);
+
+      for (let neighbor of vertex.adjacent) {
+        if (!visited.has(neighbor)) {
+          visit(neighbor);
+        }
+      }
+    };
+
+    visit(start);
+    return values;
+  }
+
+  // Visit the starting Node, then its neighbors, then the neighbors' neighbors.
+  // The queue keeps Nodes in the order they are waiting to be visited.
+  breadthFirstSearch(start) {
+    const visited = new Set([start]);
+    const queue = [start];
+    const values = [];
+
+    while (queue.length > 0) {
+      const vertex = queue.shift();
+      values.push(vertex.value);
+
+      for (let neighbor of vertex.adjacent) {
+        if (!visited.has(neighbor)) {
+          visited.add(neighbor);
+          queue.push(neighbor);
+        }
+      }
+    }
+
+    return values;
+  }
 }
 
 //
