@@ -1,0 +1,12 @@
+query MyQuery {
+  allFilms(before: "2000", after: "1976") {
+    edges {
+      node {
+        id
+      }
+    }
+  }
+  person(id: "") {
+    name
+  }
+}
