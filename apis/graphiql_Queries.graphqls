@@ -1,3 +1,8 @@
+# 1. **List All Films**: Retrieve the titles of all films available in SWAPI.
+# 2. **Fetch a Specific Character**: Get the name of a specific character using their unique ID.
+# 3. **Explore Planets**: Get the names of the first 5 planets in the Star Wars universe.
+# 4. **Starships Information**: Fetch names and models of 3 starships.
+
 type query { 
   allFilms(before: "2000", after: "1976") {
     edges {
@@ -22,11 +27,130 @@ query ExplorePlanets {
   }
 }
 
-query StarshipsInformation {
+query StarshipsInformation { 
   allStarships(first: 3) {
     starships {
       name
       model
+    }
+  }
+}
+
+# 1. **Character and Their Starships**: For each of the first 5 characters, list the names of starships they've piloted.
+# 2. **Species and Their Languages**: Retrieve names and languages of 5 species.
+# 3. **Planets and Their Climates**: Query for the names and climates of 5 planets.
+# 4. **Vehicles and Their Costs**: Get names and cost in credits for 3 vehicles.
+query CharacterAndTheirStarships {
+  allPeople(first: 5) {
+    people {
+      name
+      starshipConnection {
+        starships {
+          name
+        }
+      }
+    }
+  }
+}
+
+query SpeciesAndTheirLanguages {
+  allSpecies(first: 5) {
+    species {
+      name
+      language
+    }
+  }
+}
+
+query PlanetsAndTheirClimates {
+  allPlanets(first: 5) {
+    planets {
+      name
+      climates
+    }
+  }
+}
+
+query VehiclesAndTheirCosts {
+  allVehicles(first: 3) {
+    vehicles {
+      name
+      costInCredits
+    }
+  }
+}
+
+
+
+
+
+
+# 1. **Characters in a Specific Film**: List all characters appearing in a given film by ID.
+# 2. **Multi-Film Characters**: Find characters that appear in more than one film.
+# 3. **Aggregate Film Statistics**: Calculate the total number of characters across all films.
+
+query CharactersInASpecificFilm($filmId: ID!) {
+  film(id: $filmId) {
+    title
+    characterConnection {
+      characters {
+        name
+      }
+    }
+  }
+}
+
+query MultiFilmCharacters {
+  allPeople {
+    people {
+      name
+      filmConnection {
+        totalCount
+        films {
+          title
+        }
+      }
+    }
+  }
+}
+
+query AggregateFilmStatistics {
+  allFilms {
+    films {
+      title
+      characterConnection {
+        totalCount
+      }
+    }
+  }
+}
+
+
+# 1. **Full Character Profiles**: Compile a full profile for a given character, including their films, starships, and homeworld.
+# 2. **Link Characters with Their Planets**: Query the first 5 characters, including the name and population of their homeworld.
+# 3. **Vehicles, Their Pilots, and Pilots' Species**: For the first 3 vehicles, list their names, pilots, and the species of those pilots.
+# 4. **Films and Their Associated Entities**: For the first 3 films, list all related characters, planets, and starships.
+
+query FullCharacterProfile($characterId: ID!) {
+  person(id: $characterId) {
+    name
+    birthYear
+    gender
+    height
+    mass
+    homeworld {
+      name
+    }
+    filmConnection {
+      films {
+        title
+      }
+    }
+    starshipConnection {
+      starships {
+        name
+        model
+      }
     }
   }
 }
