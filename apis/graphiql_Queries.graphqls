@@ -1,4 +1,4 @@
-type query {
+type query { 
   allFilms(before: "2000", after: "1976") {
     edges {
       node {
@@ -6,7 +6,10 @@ type query {
       }
     }
   }
-  person(id: "") {
+  character(id: "1000") {
     name
+    height
+    gender
+    habitat
   }
 }code
