@@ -13,3 +13,20 @@ type query {
     habitat
   }
 }code
+
+query ExplorePlanets {
+  allPlanets(first: 5) {
+    planets {
+      name
+    }
+  }
+}
+
+query StarshipsInformation {
+  allStarships(first: 3) {
+    starships {
+      name
+      model
+    }
+  }
+}
