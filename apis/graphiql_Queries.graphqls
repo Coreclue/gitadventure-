@@ -154,3 +154,54 @@ query FullCharacterProfile($characterId: ID!) {
     }
   }
 }
+
+query LinkCharactersWithTheirPlanets {
+  allPeople(first: 5) {
+    people {
+      name
+      homeworld {
+        name
+        population
+      }
+    }
+  }
+}
+
+query VehiclesTheirPilotsAndPilotsSpecies {
+  allVehicles(first: 3) {
+    vehicles {
+      name
+      pilotConnection {
+        pilots {
+          name
+          species {
+            name
+          }
+        }
+      }
+    }
+  }
+}
+
+query FilmsAndTheirAssociatedEntities {
+  allFilms(first: 3) {
+    films {
+      title
+      characterConnection {
+        characters {
+          name
+        }
+      }
+      planetConnection {
+        planets {
+          name
+        }
+      }
+      starshipConnection {
+        starships {
+          name
+        }
+      }
+    }
+  }
+}
